@@ -123,28 +123,28 @@ app.get("/", (req, res) => {
 });
 
 // GET all books
-// app.get("/books", async (req, res) => {
-//   try {
-//     const books = await booksCollection
-//       .find({})
-//       .sort({ createdAt: -1, _id: -1 })
-//       .toArray();
+app.get("/books", async (req, res) => {
+  try {
+    const books = await booksCollection
+      .find({})
+      .sort({ createdAt: -1, _id: -1 })
+      .toArray();
 
-//     res.status(200).json({
-//       success: true,
-//       totalBooks: books.length,
-//       books,
-//     });
+    res.status(200).json({
+      success: true,
+      totalBooks: books.length,
+      books,
+    });
 
-//   } catch (error) {
-//     console.error("Error fetching books:", error);
+  } catch (error) {
+    console.error("Error fetching books:", error);
 
-//     res.status(500).json({
-//       success: false,
-//       message: "Failed to fetch books",
-//     });
-//   }
-// });
+    res.status(500).json({
+      success: false,
+      message: "Failed to fetch books",
+    });
+  }
+});
 
 // Start server
 async function startServer() {
